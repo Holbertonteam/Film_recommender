@@ -1,0 +1,15 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Secrets
+.env
+
+# Dataset pipeline: raw downloads and generated outputs are large / reproducible,
+# so they aren't committed. See datasets/README.md to regenerate them.
+datasets/raw/*
+!datasets/raw/.gitkeep
+datasets/processed/*
+!datasets/processed/.gitkeep
