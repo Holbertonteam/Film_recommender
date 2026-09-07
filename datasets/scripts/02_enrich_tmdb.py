@@ -1,20 +1,5 @@
 """Enrich MovieLens 1M movies with TMDB posters and genres.
-
-Matching strategy:
-  1. Primary: join on the movieId -> tmdbId mapping from ml-20m's links.csv
-     (GroupLens keeps movieId stable across dataset versions, and ml-20m's
-     catalog covers the pre-2000 films that make up ml-1m).
-  2. Fallback: for any movie without a links.csv mapping (or where the TMDB
-     id it names 404s), search TMDB by parsed title + release year and take
-     the top hit.
-
-Requires TMDB_API_KEY (see datasets/.env.example). Results are cached in
-raw/tmdb_cache.json so re-runs don't re-hit the API, and a partial run can be
-safely re-run to pick up where it left off.
-
-Output: raw/movies_enriched.csv (movie_id, title, year, genres, poster_url,
-matched_via) -- an intermediate file consumed by 03_clean_and_index.py.
-"""
+Requires TMDB_API_KEY (see datasets/.env.example)."""
 
 import json
 import re

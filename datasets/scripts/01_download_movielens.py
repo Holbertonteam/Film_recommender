@@ -1,7 +1,4 @@
-"""Download and unpack the MovieLens 1M dataset into datasets/raw/ml-1m/.
-
-Safe to re-run: skips the download if the files are already present.
-"""
+"""Download and unpack the MovieLens 1M dataset into datasets/raw/ml-1m/."""
 
 import zipfile
 

@@ -1,4 +1,4 @@
-"""Run the full CineMatch data pipeline end to end, in order."""
+"""Run the Azerbaijani-films pipeline end to end, in order."""
 
 import subprocess
 import sys
@@ -6,11 +6,9 @@ from pathlib import Path
 
 SCRIPTS_DIR = Path(__file__).resolve().parent
 STEPS = [
-    "01_download_movielens.py",
-    "02_enrich_tmdb.py",
-    "03_clean_and_index.py",
-    "04_temporal_split.py",
-    "05_eda.py",
+    "az_01_fetch_movies.py",
+    "az_02_generate_synthetic.py",
+    "az_03_temporal_split.py",
 ]
 
 

@@ -16,11 +16,7 @@ for _dir in (RAW_DIR, PROCESSED_DIR, FIGURES_DIR):
 ML_1M_DIR = RAW_DIR / "ml-1m"
 ML_1M_URL = "https://files.grouplens.org/datasets/movielens/ml-1m.zip"
 
-# ml-1m ships without a movieId -> tmdbId mapping. We pull that mapping from
-# ml-20m's links.csv instead: GroupLens keeps movieId stable across dataset
-# versions, so ml-1m's ids are (almost entirely) a subset of ml-20m's, and
-# ml-20m's catalog covers the pre-2000 films that make up ml-1m. We only ever
-# need the one small file out of that archive.
+# ml-1m has no movieId -> tmdbId mapping, so we pull it from ml-20m's links.csv
 ML_LINKS_SOURCE_URL = "https://files.grouplens.org/datasets/movielens/ml-20m.zip"
 LINKS_CSV_PATH = RAW_DIR / "links.csv"
 
@@ -32,14 +28,25 @@ TMDB_CACHE_PATH = RAW_DIR / "tmdb_cache.json"
 
 MOVIES_ENRICHED_PATH = RAW_DIR / "movies_enriched.csv"
 
-# Per-user temporal split: the most recent TEST_FRACTION of each user's
-# ratings (by timestamp) become the test set, the rest are train.
+# most recent TEST_FRACTION of each user's ratings become the test set
 TEST_FRACTION = 0.2
 MIN_TEST_RATINGS_PER_USER = 1
 
-# Env var opt-in, off by default: only set this if you've independently
-# confirmed files.grouplens.org's TLS cert is the problem (not a
-# man-in-the-middle) and you accept skipping verification for that one host.
+# Azerbaijani-films pipeline (az_*.py scripts)
+AZ_RAW_DIR = RAW_DIR / "az"
+AZ_PROCESSED_DIR = DATASETS_DIR / "processed_az"
+AZ_MOVIES_RAW_PATH = AZ_RAW_DIR / "az_movies_raw.csv"
+
+for _dir in (AZ_RAW_DIR, AZ_PROCESSED_DIR):
+    _dir.mkdir(parents=True, exist_ok=True)
+
+AZ_RANDOM_SEED = 42
+AZ_TOP_N_MOVIES = 100
+AZ_N_SYNTHETIC_USERS = 400
+AZ_MIN_RATINGS_PER_USER = 15
+AZ_MAX_RATINGS_PER_USER = 60
+
+# opt-in only, see net.py
 ALLOW_INSECURE_MOVIELENS_DOWNLOAD = os.environ.get(
     "ALLOW_INSECURE_MOVIELENS_DOWNLOAD", ""
 ) == "1"

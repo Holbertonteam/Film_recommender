@@ -1,13 +1,5 @@
-"""Clean the raw + TMDB-enriched data and map raw user/movie ids to
-contiguous 0-based indices for embedding layers.
-
-Outputs (all in datasets/processed/):
-  ratings_clean.parquet   user_idx, movie_idx, rating, timestamp
-  movies.parquet          movie_idx, title, genres, poster_url
-  users.parquet           user_idx, gender, age, occupation, zip_code  (bonus, not required by the core schema)
-  user_mapping.parquet    user_id, user_idx    (reference, for tracing back to raw ids)
-  movie_mapping.parquet   movie_id, movie_idx  (reference, for tracing back to raw ids)
-"""
+"""Clean the raw + TMDB-enriched data and map user/movie ids to contiguous
+0-based indices for embedding layers. Outputs go to datasets/processed/."""
 
 import pandas as pd
 
