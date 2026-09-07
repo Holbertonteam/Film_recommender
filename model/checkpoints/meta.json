@@ -1,1 +1,16 @@
-
+{
+  "model": "FunkSVD (biased MF, SGD) + genre TF-IDF hybrid",
+  "dataset": "MovieLens 20M, user subsample",
+  "n_users": 4000,
+  "n_items": 7359,
+  "n_ratings": 568926,
+  "seed": 42,
+  "n_users_sampled": 4000,
+  "min_movie_ratings": 5,
+  "k": 100,
+  "best_alpha": 0.8,
+  "epochs": 20,
+  "trained_on": "train+val (90% of subsample)",
+  "test_rmse": 0.82,
+  "created_utc": "2026-09-07T10:36:52+00:00"
+}
