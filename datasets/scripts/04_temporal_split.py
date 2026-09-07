@@ -1,13 +1,5 @@
-"""Per-user temporal train/test split (NOT a random split).
-
-For each user, ratings are sorted by timestamp and the most recent
-TEST_FRACTION of them become the test set; everything earlier is train.
-This mirrors how a real recommender is evaluated: predict a user's future
-ratings from their past ones, never the reverse.
-
-Outputs: processed/ratings_train.parquet, processed/ratings_test.parquet
-(both: user_idx, movie_idx, rating, timestamp).
-"""
+"""Per-user temporal train/test split (not a random split): each user's most
+recent TEST_FRACTION of ratings become the test set, the rest train."""
 
 import pandas as pd
 

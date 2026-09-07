@@ -1,9 +1,5 @@
 """Exploratory analysis: sparsity, rating distribution, long-tail popularity.
-
-Reads the cleaned, full (pre-split) ratings table so these describe the whole
-dataset rather than just one split. Saves one PNG per chart to
-datasets/figures/ for slides, and prints the same numbers to the console.
-"""
+Saves one PNG per chart to datasets/figures/."""
 
 import matplotlib.pyplot as plt
 import numpy as np
@@ -17,10 +13,6 @@ MIN_LABEL_WIDTH_PCT = 12  # below this segment width, the label can't fit inside
 
 
 def _label_segment(ax, left: float, width: float, text: str, inside_color: str) -> None:
-    """Label a horizontal-bar segment: centered inside if it's wide enough to
-    hold the text, otherwise above the segment with a small leader tick so
-    the label never gets clipped by a narrow bar (e.g. a very sparse or very
-    dense matrix)."""
     center = left + width / 2
     if width >= MIN_LABEL_WIDTH_PCT:
         ax.text(

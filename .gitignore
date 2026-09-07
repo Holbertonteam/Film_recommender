@@ -13,3 +13,5 @@ datasets/raw/*
 !datasets/raw/.gitkeep
 datasets/processed/*
 !datasets/processed/.gitkeep
+datasets/processed_az/*
+!datasets/processed_az/.gitkeep

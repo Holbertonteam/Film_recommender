@@ -1,5 +1,4 @@
-"""Shared HTTP download helper with an explicit, opt-in escape hatch for
-files.grouplens.org's TLS certificate issues (see README troubleshooting)."""
+"""Shared HTTP download helper."""
 
 import sys
 
@@ -10,9 +9,6 @@ from config import ALLOW_INSECURE_MOVIELENS_DOWNLOAD
 
 
 def download_file(url: str, dest_path, description: str | None = None) -> None:
-    """Stream `url` to `dest_path`, showing a progress bar. Verifies TLS by
-    default; only skips verification if ALLOW_INSECURE_MOVIELENS_DOWNLOAD=1
-    is set, and only after a normal, verified request already failed."""
     label = description or dest_path.name
     verify = True
     try:
